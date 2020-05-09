@@ -1,9 +1,10 @@
 $(document).ready(function () {
     var apikey = "4ad952e4b391b4310845e1ccc7314888";
-
+    var array = [];
     $("#button").on("click", function () {
         var input = $("#text").val();
         var list = document.querySelector("#list");
+
         $.ajax(
             {
                 type: "GET",
@@ -42,6 +43,7 @@ $(document).ready(function () {
                     createTommorowCard();
                     createSecondDayCard();
                     createThirdDayCard();
+
                 }
 
                 $.ajax(
@@ -65,6 +67,7 @@ $(document).ready(function () {
                         if ($("#cardbody").innerHTML != "") {
                             addtoCard();
                         }
+
                         addtoTommorrowCard();
                         addtoSecondDayCard();
                         addtoThirdDayCard();
@@ -103,6 +106,13 @@ $(document).ready(function () {
                             $("#thirdday").append(`<p style = "color:white">Humidity: ${thirddayhumidity}% </p>`)
 
                         };
+
+                        $(document).on("click", ".list-group-item", function () {
+
+                            createCard();
+                            addtoCard();
+                            addtoTommorrowCard();
+                        });
                     });
 
                 //Functions That Creates Cards
